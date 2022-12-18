@@ -1,0 +1,319 @@
+{
+	"info": {
+		"_postman_id": "a76ade2a-2b09-4634-a205-4c3c90cc64ec",
+		"name": "Heroku_dbo_jobs_tracker_API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13704008"
+	},
+	"item": [
+		{
+			"name": "Welcome",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://dbo-jobs-tracker-api.herokuapp.com/",
+					"protocol": "https",
+					"host": [
+						"dbo-jobs-tracker-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json();\r",
+							"pm.globals.set(\"accessToken\", jsonData.token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"anna\",\r\n    \"email\":\"anna@email.com\",\r\n    \"password\": \"annaanna\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HEROKU_JOB_TRACKER_API_URL}}/auth/login",
+					"host": [
+						"{{HEROKU_JOB_TRACKER_API_URL}}"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json();\r",
+							"pm.globals.set(\"accessToken\", jsonData.token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"julie\",\r\n    \"email\":\"julie@email.com\",\r\n    \"password\": \"julie@email.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HEROKU_JOB_TRACKER_API_URL}}/auth/register",
+					"host": [
+						"{{HEROKU_JOB_TRACKER_API_URL}}"
+					],
+					"path": [
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create job",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"company\":\"        SWING      \",\r\n    \"position\":\"       internship     \"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HEROKU_JOB_TRACKER_API_URL}}/jobs",
+					"host": [
+						"{{HEROKU_JOB_TRACKER_API_URL}}"
+					],
+					"path": [
+						"jobs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get One Job",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HEROKU_JOB_TRACKER_API_URL}}/jobs/628f4f5a4d722e39f0841bfd",
+					"host": [
+						"{{HEROKU_JOB_TRACKER_API_URL}}"
+					],
+					"path": [
+						"jobs",
+						"628f4f5a4d722e39f0841bfd"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All Jobs",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HEROKU_JOB_TRACKER_API_URL}}/jobs",
+					"host": [
+						"{{HEROKU_JOB_TRACKER_API_URL}}"
+					],
+					"path": [
+						"jobs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patch A Job Copy",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"company\":\"Russian Inc\",\r\n    \"position\":\"Lead Developper\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HEROKU_JOB_TRACKER_API_URL}}/jobs/628f84c36aecd3000405d36b",
+					"host": [
+						"{{HEROKU_JOB_TRACKER_API_URL}}"
+					],
+					"path": [
+						"jobs",
+						"628f84c36aecd3000405d36b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete One Job Copy",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{HEROKU_JOB_TRACKER_API_URL}}/jobs/628f4f5a4d722e39f0841bfd",
+					"host": [
+						"{{HEROKU_JOB_TRACKER_API_URL}}"
+					],
+					"path": [
+						"jobs",
+						"628f4f5a4d722e39f0841bfd"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete All Jobs Copy",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/jobs/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"jobs",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer"
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
