@@ -37,10 +37,11 @@ app.use(express.json());
 app.get("/", (req, res) =>
   res.status(200).send(
     `<h1> welcome to job API</h1>
-    <p>go to <a href="https://job-api-ro2h.onrender.com/api/v1"> this link</a> for testing backend API</p>
-  
-  
-  `,
+    <p>go to <a href="https://job-api-ro2h.onrender.com/api/v1/auth"> this link</a> for testing backend API authentication</p>
+    <p>go to <a href="https://job-api-ro2h.onrender.com/api/v1/jobs"> this link</a> for testing backend API jobs</p>
+    <br />
+    Use those links with postman for example, before I finalize a Swager.io interface for testing directly
+    the backend`,
   ),
 );
 // Routers

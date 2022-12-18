@@ -56,9 +56,7 @@ server.on("listening", () => {
   // dans la console.
   const address = server.address();
   const bind = typeof address === "string" ? "pipe" + address : port;
-  console.log(
-    `Server is running on https://job-api-ro2h.onrender.com/${port}/`,
-  );
+  console.log(`Server is listening on https://job-api-ro2h.onrender.com/`);
 });
 
 //-----------------------------------------------------------------------
