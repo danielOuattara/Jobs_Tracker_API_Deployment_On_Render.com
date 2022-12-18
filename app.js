@@ -34,7 +34,7 @@ app.use(
 
 app.use(express.json());
 
-app.get("https://job-api-ro2h.onrender.com/", (req, res) =>
+app.get("/", (req, res) =>
   res.status(200).send(
     `<h1> welcome to job API</h1>
     <p>go to <a href="https://job-api-ro2h.onrender.com/api/v1"> this link</a> for testing backend API</p>
